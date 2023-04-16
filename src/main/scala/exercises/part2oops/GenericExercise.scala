@@ -18,7 +18,7 @@ abstract class MyGenericList[+A] {
 }
 
 // Nothing is a proper substitute of Any type
-object genericEmpty extends MyGenericList[Nothing] {
+case object genericEmpty extends MyGenericList[Nothing] {
   def head: Nothing = throw new NoSuchElementException
   def tail: MyGenericList[Nothing] = throw new NoSuchElementException
   def isEmpty: Boolean = true
@@ -26,7 +26,7 @@ object genericEmpty extends MyGenericList[Nothing] {
   def add[B >: Nothing](element: B): MyGenericList[B] = new genericCons(element, genericEmpty)
 }
 
-class genericCons[+A](h: A, t: MyGenericList[A]) extends MyGenericList[A] {
+case class genericCons[+A](h: A, t: MyGenericList[A]) extends MyGenericList[A] {
   //  def head: Int = ???
   //  def tail: MyGenericList = ???
   //  def isEmpty: Boolean = ???
@@ -44,6 +44,7 @@ class genericCons[+A](h: A, t: MyGenericList[A]) extends MyGenericList[A] {
 
 object GenericExercise extends App {
   val ListOfIntegers: MyGenericList[Integer] = new genericCons(1, new genericCons(2, new genericCons(3, genericEmpty)))
+  val cloneOfListOfIntegers: MyGenericList[Integer] = new genericCons(1, new genericCons(2, new genericCons(3, genericEmpty)))
   val ListOfString: MyGenericList[String] = new genericCons("Hello", new genericCons("Rock", new genericCons("The JVM", genericEmpty)))
 
   println(ListOfIntegers)
@@ -51,4 +52,5 @@ object GenericExercise extends App {
 
   println(ListOfIntegers.toString)
   println(ListOfString.toString)
+  println(ListOfIntegers == cloneOfListOfIntegers)
 }
