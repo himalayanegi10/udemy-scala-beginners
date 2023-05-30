@@ -44,6 +44,23 @@ object WhatsAFunction extends App {
   val add3 = superAdder(5)
   println(add3(3))
   println(superAdder(5)(6) + " <- Curried Function")
+  /*
+  Takeaways:
+    We want to work with functions:
+      -Pass function as a parameter
+      -use function as a value
+    Problem: Scala works on top of JVM
+      -Designed for java
+      -First class element: object
+    Solution: All scala functions are objects
+      -function trait, upto 22 params
+      -syntactic sugar function types
+
+      trait Function1[-A,+B] {
+        def apply(element: A): B
+      }
+      Function2[Int, String, Int], its syntactic sugar === (Int, String) => Int
+   */
 }
 
 trait MyFunction[A,B]{
