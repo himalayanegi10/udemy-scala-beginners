@@ -36,4 +36,32 @@ object HOFsCurries extends App {
 
   // curried function
 
+  val superAdder: Int => (Int => Int) = (x: Int) => ((y: Int) => x + y)
+  val add3 = superAdder(3) // 3 + y
+  val getSum = add3(17)
+  println(getSum)
+
+  // Functions with multiple parameter lists
+  def curriedFormatter(c: String)(x: Double): String = {
+    c.format(x)
+  }
+
+  val standardFormat: (Double => String) = curriedFormatter("%4.2f")
+  val preciseFormat: (Double => String) = curriedFormatter("%10.8f")
+  println(standardFormat(Math.PI))
+  println(preciseFormat(Math.PI))
+
+  /*
+  Takeaways:
+  -Functional programming is about working with functions
+    -Pass functions as a parameter
+    -Return functions as a list
+
+   Higher Order Function (HOFs)
+   def nTimesBetter(f: Int => Int, n: Int): Int => Int = ???
+
+   Currying = Functions with multiple parameter lists
+   def curriedFormatter(a: Int, b: Int, c: String)(c: String): String
+                        parameter list 1            parameter list 2
+   */
 }
