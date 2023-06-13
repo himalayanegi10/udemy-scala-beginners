@@ -1,0 +1,65 @@
+scala offers both MUTABLE and IMMUTABLE collections
+
+*mutable collections can never be updated in place
+*immutable collections never change
+
+package object scala {
+    type List[+A] = immutable.List[A]
+    type Set[A] = immutable.Set[A]
+}
+
+* We use IMMUTABLE collections by default
+
+IMMUTABLE COLLECTIONS: scala.collections.immutable
+
+Traversable
+    -Iterable
+        -Seq
+            -IndexedSeq
+                *Vector
+                *String
+                *Range
+            -LinearSeq
+                *List
+                *Stream
+                *Stack
+                *Queue
+        -Set
+            *HashSet
+            *SortedSet
+        -Map
+            *HashMap
+            *SortedMap
+
+
+MUTABLE COLLECTIONS: scala.collections.mutable
+
+Traversable
+    -Iterable
+        -Seq
+            -IndexedSeq
+                *StringBuilder
+                *ArrayBuffer
+            -Buffer
+                *ArrayBuffer
+                *ListBuffer
+            -LinearSeq
+                *LinkedList
+                *MutableList
+        -Set
+            *HashSet
+            *LinkedHashSet
+        -Map
+            *HashMap
+            *MultiMap
+
+Traversable
+Base traits for all collections. Offers a great variety of methods
+
+maps: map, flatMap, collect
+conversions: toArray, toList, toSeq
+size info: isEmpty, size, nonEmpty
+tests : exists, forall
+folds : foldLeft, foldRight, reduceLeft, reduceRight
+retrieval : head, find, tail
+string ops : mkString

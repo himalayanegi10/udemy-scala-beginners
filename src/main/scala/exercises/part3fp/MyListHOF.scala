@@ -184,4 +184,11 @@ object runnerFPHOF extends App {
   println(zippedList)
   println("Fold")
   println(listOfInt.fold(2)(_ + _))
+
+  // for comprehensions
+  val result = for {
+    a <- listOfInt
+    b <- listOfInt2
+  } yield a * b
+  println(result)
 }
